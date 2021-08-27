@@ -1,0 +1,35 @@
+{
+    "name": "react-flag-symbol-currency",
+    "version": "1.0.0",
+    "description": "country flag and currency symbol by currency code (iso 4217)",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "./node_modules/.bin/babel src --out-file index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/chrystianSweickDev/react-flag-symbol-currency.git"
+    },
+    "keywords": [
+        "react",
+        "currency",
+        "country",
+        "flag",
+        "symbol"
+    ],
+    "author": "Chrystian Sweick",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/chrystianSweickDev/react-flag-symbol-currency/issues"
+    },
+    "homepage": "https://github.com/chrystianSweickDev/react-flag-symbol-currency#readme",
+    "dependencies": {
+        "@babel/cli": "^7.14.8",
+        "@babel/core": "^7.15.0",
+        "@babel/preset-env": "^7.15.0",
+        "@babel/preset-react": "^7.14.5",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+    }
+}
