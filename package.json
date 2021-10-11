@@ -1,35 +1,49 @@
 {
     "name": "react-flag-symbol-currency",
-    "version": "1.0.0",
-    "description": "country flag and currency symbol by currency code (iso 4217)",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "./node_modules/.bin/babel src --out-file index.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/chrystianSweickDev/react-flag-symbol-currency.git"
-    },
-    "keywords": [
-        "react",
-        "currency",
-        "country",
-        "flag",
-        "symbol"
+    "files": [
+        "./dist"
     ],
-    "author": "Chrystian Sweick",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/chrystianSweickDev/react-flag-symbol-currency/issues"
+    "repository": "git://github.com/chrystianSweickDev/react-flag-symbol-currency",
+    "keywords": [
+        "react,currency,country,flag,symbol,money"
+    ],
+    "version": "1.0.2",
+    "main": "dist/index.cjs.js",
+    "module": "dist/index.esm.js",
+    "source": "src/index.jsx",
+    "type": "module",
+    "devDependencies": {
+        "@babel/cli": "^7.10.5",
+        "@babel/core": "^7.11.4",
+        "@babel/preset-env": "^7.11.0",
+        "@babel/preset-react": "^7.10.4",
+        "@rollup/plugin-babel": "^5.2.0",
+        "rollup": "^2.26.4",
+        "rollup-plugin-delete": "^2.0.0",
+        "rollup-plugin-peer-deps-external": "^2.2.3",
+        "rollup-plugin-postcss": "^4.0.1"
     },
-    "homepage": "https://github.com/chrystianSweickDev/react-flag-symbol-currency#readme",
-    "dependencies": {
-        "@babel/cli": "^7.14.8",
-        "@babel/core": "^7.15.0",
-        "@babel/preset-env": "^7.15.0",
-        "@babel/preset-react": "^7.14.5",
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2"
-    }
+    "scripts": {
+        "build": "rollup -c",
+        "build-watch": "rollup -c -w"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "peerDependencies": {
+        "react": "^16.13.1 || ^17.0.0"
+    },
+    "license": "MIT"
 }

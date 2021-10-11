@@ -1,17 +1,22 @@
-"use strict";
+import React from 'react';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.CurrencySymbol = CurrencySymbol;
-exports.CurrencyFlagSymbol = CurrencyFlagSymbol;
-exports["default"] = void 0;
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
 
-var _react = _interopRequireDefault(require("react"));
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+    return target;
+  };
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+  return _extends.apply(this, arguments);
+}
 
 var flags = {
   aed: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgAgMAAAApuhOPAAAADFBMVEUAAAAAcy/+AQH///+EOfg+AAAAHElEQVQY02NYtWpVKAwwDBTnPwwMQg4DHAwEBwCJ+ck3G+19rwAAAABJRU5ErkJggg==',
@@ -145,7 +150,7 @@ var flags = {
   tjs: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAMAAABjCgsuAAAAgVBMVEUaZQAaZgDLAADMAADMAAH3wgD3wgH4wwD4xAj4xQf4xgv5xg75yyH6yBn6yRv611b72V372V7722b733f84YH84oH85Iv85Iz86aL86aP98cb988z9883+9NH+99v+997++OH++eT++ef++uv++uz+++3++/D//PH//vz///3////eF1b8AAABP0lEQVQ4y5VSh3bDMAjEQKLule69m+j/P7AWw5ZqpZFlPwnBHRzYwEhMRMxoBsmprwRSLFmyERDjGNHDsMJhcSQGKxKQMuCwvAC7O1XBdAOr5TkJJVnS1SOwTMUiKbm1uhWzOHodobEFECSlxawbTGBtHZ0uw9CmNZe0pyqJs1bYpjPUBtdGaBRL7nPEUY7s4DNIQLap6OBNpScxDsSZaxthtZpDuHyMB4fx4aqZcKrHRSPhqGr+Q1hWzR1Nf1/f/LQ2fZtf7hoIQfbnl+yyW9JmvQzrTet3WIaTr/MYzz6PF6Gx6af9+P4a9+5bP9xHWARZbzP+pe0/X9f1b+d7l9kAauaR0QF/4FDCDNh7CyCUJZwKOR8mAA/CVOQkl+eror1crmnSSH4zYTCJVgTlRcCeMlU5gmIuUBNcgQ5lfgED82/sfyuthQAAAABJRU5ErkJggg==',
   tnd: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAMAAABjCgsuAAAB8lBMVEXlAADmAADmAAHmAAPmAAbmABLnAADnAAPnAAXnAAfnAAjnAArnAAznAA7nABDnABLnABTnABXnARTnAg7nAhLnBBrnBhTnBhrnBhznCB3nChrnCx7nDCDoCSDoDCToDSHoDSLoDiDoECDoECLoECToECjoFCXoFSjoGC/oHC7oIDToIDbpIDbpITbpIjnpJTnpJz7pKT3pK0LpLkLqMEXqMEbqMEfqMknqNEjqN03qPEzqPVLrP1PrRVbrR1fsQ1bsRFjsRVnsR1nsSFzsSl3sSl7sTl/sTmHsUGHsUWXsUmLtVmntXW3tY3TtZHXtZnXuZnfuannva3vvbHzvbXvvb3zvdIXvdYLvdoXvd4fve4rwfozwf47wgZDwg5HwhpLxh5Xyi5nyjZryj5rylaHyl6H0n6n0oqz0oq30o630prD0qLL0qbP0qrP0rLT0rbX1sLn1srr2srz2uMH2usL2usP2vcT2v8f3wMj3wcj3wcn4xMv4xMz4xs34x874ytH4y9H4zdP4z9T609j61Nn61tv619z619362Nz62N362t7629/63uL63+P74OT74eT85ej85en85un85+n86u387O787O/97e/97/H98PL98fL98fP99PX99fb+9vf+9/j++Pj++Pn++fn/+vv//Pz////JTB5ZAAACwElEQVQYGU3BBXuXZRiH4efZ9pe5Ma6LH3Z3InZ3d7fYYneiInYrChaKoqK7v6fvu8FxeJ6NSAAhQAIoKEYFGZiYIE0mqKgoIIIYgmAkQgKIDaNREhAQURAUcYBBEWxGFFFBCIMkIqKICSKKTYJEBDEIioBBFCFiBG0KYRSERBAVJkZjwAEq2AQiKsTdFmZ6n5rDEUoIAwdNBEXFZfP9wLOvvfHytfMdl6Ds0ZQgAhNw0I9f/3UNdr513eycywiCaEOJiLikX7Gl6q8vP/6+ql4+enq1ihIGSmOgjOKgX7Ortt190mw//IINO+v9I+dUSGQQaUFiDBCdPvXX2nhi7xc9+9Hmp57eXs9Po4ISRBqCOCBKf7E+P6bPPFyjf3dUXdmVQJig0EyMCTiYXfdPXd/7bVWbHqyqxapXpxAigpjGKKKg/ebacsDcwVuqvtjnmSfv/KXqp2PnBcNAsCGogGJ/vF7r/fz6bfN983uteb2qFs9YYQBFMU0BGYl9Qz3X+2W16ZIF+jk1OndaMYFEaThRBAP2h+rdmenTFqveWLH2qPsXq/5eNyviAAINghgi2q+uHSes2PvNqg9O2fbDC9urvtl/QTQYUVrCQARx5RFb69E+debP9enbteSxriSggDSMEnBJv6d2XdX7ee/X4JMf6/eTZxQFEoyNYECJ6MJ+G+uPW9e0fuEdd93+ymLd0h0AEVCbDCREos4e917Vh/deetbFj3xX9UBHJQZESZNBGDlaPXPQE3/Wsq9u6KscEVFGDUVBneBoZT99/Tvfbv3spZsO6TgCgwKmCRIExWWzff7Qw/ad6ivdLREVsAkYURL3WLWwsMr/SSJoaILGKIhAFDQaEcNIAaWBAgJJgACCiihEojBBoMUQDMuiRpGEgIwUAoiNgXEJEEBxQFAIqFFBbCqyzDCQiEZwQIwQUfA/xmu/l4veCsMAAAAASUVORK5CYII=',
   top: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAMAAABjCgsuAAABC1BMVEWyAACzAAC2Cgy3AAC4AAC5AAC5FRq7AAC7EBW7ERW8AAC8AQC8Cge8Cgm8DRC8DhC9AAC9AQC9BAC+AAC+GRu+Ghu/AAC/GhzAAQDBAADBAAHBAQDBAQHBAgHBCQjCAADCAAHCAQDCAQHCCQfCCgfCIibCIifDCAfDCQnDDA3DDQ3EDQzEDQ7EDg7FKzLFLTPFLTXFLjbFMjnGLjbHLS3HLS/ij5Djj5Djj5HjkJHlj4/mkZHmnJzmoaLnnp3on57uurjvurnwv77wxMPxv77xxcTyyMfyyMj20c/33Nv65uT78vH78vL78/P88fH88vL88vP89PT++vr+/Pz/+vr//Pz//P3//v7///8X466pAAACaklEQVQ4y22UWZcURRCFEx1Q062LFvG7gGZfwZFsB/cVxYVFWWYKBtD+/7/Eh4iqrjmaT3268kbcJTLK7v/Pw89XagYD2LIxBsp85fR4fPJiD/iiWkK2rA0JNd4D7lz+8K2f/1kA2DdoGMtGiw4/vXJQflwAVhgbgfnIBkteUvr1jfWrv5wBIAM2jl62Jkp/P3u8u/3O+wc/nIzHz2dKEPeykbCmDn9+e/Ho8AP86fb6J/cD8HXFAmjRodGMWwLuvXdutTZtXc9f+H12ySBwCgcLFIA/Lp1breXNejh/4bdJQ1zE5oqVKTg7PPjm4tHhNfuwX79xNwBfVoQ0aaA1sJ2iXz57srv97vrg+5Px+OXeVk+6leREW9j6+uqMrXUyklnHntIU3Hf/BRgUUUicSfrO5Y/fXo7Gyi3524RFNC9m6ex59NVrwigsNZZlbJdxHMfx6fj05HS3270Y85z+davaqNluV2VhYRlK771ve++998+2vW+32957P7p5rcX4pKuhxrjUWt+sdRjqUGutwzDUOtRah2m0scxmT69knRSX/rWGadAUEJptjExx/HST82RSbgQLxUC1uFfm+sQUB1eHhwZkvBGOh02xjZvRghF5z0I0lCRsi5IbIYqRnKJRlsJXNso4cCHKTRbKss3GYia6yfIYUywcbK14ibLcQAiihZwro5kya7ataftI+8DChviQtkpo43kNMc30NElSSDTgErWD08SUfPzM4xrPR1ilpdqWIQloV+MvJuJk0Fgll1RTcsqvkQuegnNEbpd5u6H9qpMSC42GF9EVR3lF0SAdNJHDERRzYWz+BU8+7/FbW9zUAAAAAElFTkSuQmCC',
-  "try": 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAMAAABjCgsuAAAAflBMVEXjChfjCxjjDBnjDRrjDhvjDxzkEyDkGSXlHyvmJjLmJzPnLzrnMDvnND/nNT/oOkToO0brVl/sWGHsXGXtY2vtZW3tZm7ubnbwg4nxjJL1sLT2tbj5y835ztH50NP50dT629373N774+T75OX86+z87O398PH++Pj++vr///+sIXRYAAAAfElEQVQ4y+1SNw6DUBT71NAJvbcUwPe/IFKGMPI9wYA3S7Zkv2chblwVSlK/lqkpdEm92wNdahuWp0rpwxlrqcnnebyBjClQAQ2jV7+AwxiewLAz3z80xED9J1HbRpRBjCMXyQwC87D0hyxNn/X3uJxysNPgx8fP+8YJ2AB3UgqNMCiEiAAAAABJRU5ErkJggg==',
+  try: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAMAAABjCgsuAAAAflBMVEXjChfjCxjjDBnjDRrjDhvjDxzkEyDkGSXlHyvmJjLmJzPnLzrnMDvnND/nNT/oOkToO0brVl/sWGHsXGXtY2vtZW3tZm7ubnbwg4nxjJL1sLT2tbj5y835ztH50NP50dT629373N774+T75OX86+z87O398PH++Pj++vr///+sIXRYAAAAfElEQVQ4y+1SNw6DUBT71NAJvbcUwPe/IFKGMPI9wYA3S7Zkv2chblwVSlK/lqkpdEm92wNdahuWp0rpwxlrqcnnebyBjClQAQ2jV7+AwxiewLAz3z80xED9J1HbRpRBjCMXyQwC87D0hyxNn/X3uJxysNPgx8fP+8YJ2AB3UgqNMCiEiAAAAABJRU5ErkJggg==',
   ttd: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAMAAABjCgsuAAACUlBMVEUAAAABAQECAgIDAwMEBAQGBgYHBwcICAgMDAwNDQ0ODg4QEBAVFRUWFhYXFxcYGBgeHh4hISEiIiIjIyMsLCwtLS0uLi4zMzM5OTk6Ojo7Ozs/Pz9AQEBBQUFISEhJSUlPT09QUFBRUVFXV1dYWFhgYGBhYWFpaWlra2tsbGxwcHBycnJzc3N3d3d/f3+IiIiWlpaXl5eYmJiZmZmfn5+pqamqqqqrq6uurq6vr6+wsLC5ubm6urq9vb2+vr6/v7/BwcHLy8vMzMzNzc3Ozs7Pz8/X19fa2trb29vd3d3gAADgAQHgAgLgAwPgBAThBQXhBwfhCQnhCgrhDAziDw/iEBDiERHiExPjFRXjFxfjGBjjGRnjGhrjHBzkHR3kICDkISHkJCTk5OTlJiblKCjlKirlLCzl5eXmMDDmMTHmMzPm5ubnNzfnOTnnPDzoPz/oQUHoRUXpR0fpS0vpTU3p6enqUFDqUlLqVFTqVlbrW1vrXV3sYGDsYmLsZWXtZ2ftbGztbm7t7e3udHTud3fu7u7vf3/whobw8PDxiIjxi4vx8fHykJDyk5Pzm5vznZ30oqL0paX09PT1rKz19fX2srL2tbX2ubn29vb3u7v3wcH39/f4w8P4xcX4ycn5ysr5zs750ND5+fn60tL609P61dX61tb62tr729v73t7739/74eH7+/v85OT85eX85+f86Oj86ur97Oz97e397+/98PD98fH9/f3+8/P+9PT+9fX+9vb+9/f++Pj++fn++vr+/v7/+/v//Pz//f3//v7////xKz4lAAABpElEQVQ4y4XS2SNUcRjG8ZOxky2DUiRL1siSrUKleEZGpiJLiGxTsu8VsisqFWOIEJW1pMkyzIw5/1cX/c6Zy/e9fj9Xz5cb4KPNuf8Xxk8oQB2HrqMEKyb8V2dziX8ZB7QfJtkycXZy6SEN0LB77TgTnoPr5TTAk1/pJ5hwfbT1lAZ4vKZ0Y8L51k49DVC03HeKCYfrB200wIO5D95MWCcaXtIACtVqABMWMfwQDZA1rgtlQnKRf5NBAtwe5cM5cfR3chJANmTK5LxGpSAB0G2MFzLxUX/OoQE69FeFTE4Pfi2kARr3UuyZkFb8KKUBnm3fdBJH36yiAcrXlVImHG/8raMBir/1nRRGv6xtpQHyvrz3YsLykuEFDXBvet5PGD3S2E8DZH/ShZhGf51BAmSOmTIJ1LyVkwCyYT7CjIlz6o93SAD0GuOETM6MTN2lATr1V2yYcG9aLKABmvfFTFzSvpfQALV/xEwcUzcqaYDqnxVCJnbJv2togLKVHg9h9FhtCw2QvyBmIokyPKcB7s/M+zJx7ILxFQ2gmNAFC6MHaQb+ATdPlox1oRLJAAAAAElFTkSuQmCC',
   twd: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAMAAABjCgsuAAABF1BMVEUIOZwJOpwLO50MPJ4NPZ4OPp4TQqAUQqEVQ6EWRKEXRaIYRqMZR6McSaQdSqUfTKUgTKYgaZchaZciaZciapYiapgjT6cjapcjapglUKgmUagma5knbpkrVaosVqoyWq0zW602Xa4+ZLI/ZbJBZ7NDgKdEgadHgqhNhqxOcbhVdrtYebxYi7JZjbNcfb5dfb5lhMFsicRwnr15pMB9mMqBqsSEncyKsMiXuc6Zus+dsdidvdGevtGfstmitNqmuNunxNaou9uputyqvdytwNytyNizwuG0zNy2xeK3yOC4z966yOPD0OXFJCDF0ufN1+vQ2ezS2+3U3e7c4/HeIRDh5/P1+Pr2+fv6+/39/f79/v7+/v/////0RptvAAAAvklEQVQ4y+3SxQ4CUQwF0AKDzWCDu7u7u7s77/+/A1uRQOhsCXfdk9y0Bfic2fZNXkdoTsAO0OaDXowGk7j5FPKueThA8yFf0Pk0mRYIlBigWs6NxTMhTfVo50BVUsRK5J5B0ImpJAqXjfsHINp+yvQdSCM19vAE1kaCwVSSRyuP+XHAjdqSfDFlqxdCemxn48EAhoJszuC3pLu3fsjDDZOKY9i1otCXtgHUhSCjuTyfhOu3Yt57yzF/8Ac/DK4rCoOe4BIRywAAAABJRU5ErkJggg==',
   tzs: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAMAAABjCgsuAAAB8lBMVEUAAAAAo90Bo90CAgACo9wEBAAFBAAFpNkHBgAHpNcIpNcJCAAKpdUNCwEPDQERptASDwETps4UEQEWp8sXEwIZqMocqMcetToftTohGwIitjkkHgMktjklHwMltjkmtjgnqr8oIQMqq7wsJAMttjguq7kutzcwKAQxKAQxuDYzrLU0uDc2uDY5LwU+MwU/ujVAr6tDNwVDujRFr6dGujNIOwZKsKNKujNNPwZPsZ9UsptWvDFXSAdYSQdavTBbTAhdTQhfvTBhUQhjUghjvS9ltY1nVglovi5pVwlrtoltWglvXAlxuIRzXwp1YQp2wCx3uYB7wSt9aAp/aQuAwSqDbQuFbguGwimHvHOJcQuLcwyNvW6PdgyReAyTvmmUxCeVew2XfQ2Zv2WZxCaexSWfgw2hhQ6kxiWmiQ6owlirjg+tw1Wwkg+yyCKzxFC1lg+2yCK4xUy6ySG9xUjAySDDohHEoxHEyh/IphHKyD7MqRHOyTrQrBLQzB3SyTjTzBzUsBLWyjTXzBzazRvbtRPfuRPhzCziuxPjzhrkzCnlvhTmzhnnzSjowBTpzSbpzhrrzxnsziPu0BjvxhTxxxXzyRXzzx700Bj1yxX10Bf10Bz2zBX20Bf20Bz40Bf40Br5zhX6zxX70BX70Rb70Rf80RZvneENAAABnUlEQVQ4y43T5zsXYBSH8eckIiNJhaY0UJTsCqGM9tLeJSMZiSQkkSgqI7Os7v/TW4/nXL/rOa/vz/fdMTsD3cE3wNwVs/YC9ae/Ab3JxhMkPFkBnoUbT3C8GxjJM8YTXJ0CmmKNJzjcDExfNMYTFH4HupKUvEADu18APAp188hqFHDyEzCcrcyn9aOA6zNAQ4ybB91YxAUpb4HJCmU+vg34fWodKP4JdCYqfdE40LpDLLD3JbB8P8TNo2qBhWsbxQJZfcBghjKfPgB8ThWxwK15oD7azYOrloDnEWKBo++AiVJlflcHMJovYoFzv4COPUpfMgG0bBcL7KsBlm4Hu3l0PfD30gaxQO4XYCBdmc8YBHoOiawFcXf+AbVRbh5ybxl4vFkscOw9MH5WmU/sBH7kiHWmfAxoj1f6skmgcZusA8DizSA3j2kAZitFXNCfpsxnDwMfD4gCXkW6eehDgAdhooAzynxSFzCUKdppb35hGni9VTxBbBPw57yIJ8gbAT7sF08Q/hT4f3eTeIIjvcDXEyKe4PIcULclUC+rYcy9iKPpyg0AAAAASUVORK5CYII=',
@@ -357,7 +362,7 @@ var symbols = {
 
 function CurrencyFlag(props) {
   var currency = props.currency;
-  return /*#__PURE__*/_react["default"].createElement("img", _extends({
+  return /*#__PURE__*/React.createElement("img", _extends({
     src: flags[currency.toLowerCase()],
     alt: ""
   }, props));
@@ -367,14 +372,12 @@ function CurrencySymbol(props) {
   var currency = props.currency;
   return symbols[currency.toLowerCase()];
 }
-
 function CurrencyFlagSymbol(props) {
   var currency = props.currency;
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, " ", /*#__PURE__*/_react["default"].createElement("img", _extends({
+  return /*#__PURE__*/React.createElement(React.Fragment, null, " ", /*#__PURE__*/React.createElement("img", _extends({
     src: flags[currency.toLowerCase()],
     alt: ""
   }, props)), " ".concat(symbols[currency.toUpperCase()]), " ");
 }
 
-var _default = CurrencyFlag;
-exports["default"] = _default;
+export { CurrencyFlagSymbol, CurrencySymbol, CurrencyFlag as default };
