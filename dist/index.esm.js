@@ -370,7 +370,7 @@ function CurrencyFlag(props) {
 
 function CurrencySymbol(props) {
   var currency = props.currency;
-  return symbols[currency.toLowerCase()];
+  return symbols[currency.toUpperCase()];
 }
 function CurrencyFlagSymbol(props) {
   var currency = props.currency;

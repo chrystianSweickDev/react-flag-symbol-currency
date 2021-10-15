@@ -350,7 +350,7 @@ function CurrencyFlag(props) {
 
 export function CurrencySymbol(props) {
     const { currency } = props
-    return (symbols[currency.toLowerCase()]);
+    return (symbols[currency.toUpperCase()]);
 }
 
 export function CurrencyFlagSymbol(props) {
