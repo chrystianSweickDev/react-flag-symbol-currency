@@ -5,7 +5,12 @@
     ],
     "repository": "git://github.com/chrystianSweickDev/react-flag-symbol-currency",
     "keywords": [
-        "react", "currency", "country", "flag", "symbol", "money"
+        "react",
+        "currency",
+        "country",
+        "flag",
+        "symbol",
+        "money"
     ],
     "version": "1.0.4",
     "main": "dist/index.cjs.js",

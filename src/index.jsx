@@ -343,24 +343,31 @@ const symbols = {
 function CurrencyFlag(props) {
     const { currency } = props
 
-    return (<img src={flags[currency.toLowerCase()]} alt="" {...props} />
+    if (flags[currency.toLowerCase()]) {
+        return (<img src={flags[currency.toLowerCase()]} alt="" {...props} />);
+    }
 
-    );
+    return null;
 }
 
 export function CurrencySymbol(props) {
     const { currency } = props
-    return (symbols[currency.toUpperCase()]);
+
+    if (symbols[currency.toUpperCase()]) {
+        return (symbols[currency.toUpperCase()]);
+    }
+
+    return null;
 }
 
 export function CurrencyFlagSymbol(props) {
     const { currency } = props
-    return (<> <img src={flags[currency.toLowerCase()]} alt="" {...props} />{` ${symbols[currency.toUpperCase()]}`} </>
 
-    );
+    if (flags[currency.toLowerCase()] && symbols[currency.toUpperCase()]) {
+        return (<> <img src={flags[currency.toLowerCase()]} alt="" {...props} />{` ${symbols[currency.toUpperCase()]}`} </>);
+    }
+
+    return null;
 }
-
-
-
 
 export default CurrencyFlag;
