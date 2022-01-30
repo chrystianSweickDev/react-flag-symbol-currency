@@ -382,13 +382,17 @@ function CurrencySymbol(props) {
 
   return null;
 }
-
 function CurrencyFlagSymbol(props) {
   var currency = props.currency;
-  return /*#__PURE__*/React.createElement(React.Fragment, null, " ", /*#__PURE__*/React.createElement("img", _extends({
-    src: flags[currency.toLowerCase()],
-    alt: ""
-  }, props)), " ".concat(symbols[currency.toUpperCase()]), " ");
+
+  if (flags[currency] && symbols[currency]) {
+    return /*#__PURE__*/React.createElement(React.Fragment, null, " ", /*#__PURE__*/React.createElement("img", _extends({
+      src: flags[currency.toLowerCase()],
+      alt: ""
+    }, props)), " ".concat(symbols[currency.toUpperCase()]), " ");
+  }
+
+  return null;
 }
 
 export { CurrencyFlagSymbol, CurrencySymbol, CurrencyFlag as default };

@@ -50,5 +50,8 @@
     "peerDependencies": {
         "react": "^16.13.1 || ^17.0.0"
     },
-    "license": "MIT"
+    "license": "MIT",
+    "dependencies": {
+        "postcss": "^8.4.5"
+    }
 }
