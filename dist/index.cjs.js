@@ -362,16 +362,27 @@ var symbols = {
 
 function CurrencyFlag(props) {
   var currency = props.currency;
-  return /*#__PURE__*/React.createElement("img", _extends({
-    src: flags[currency.toLowerCase()],
-    alt: ""
-  }, props));
+
+  if (flags[currency]) {
+    return /*#__PURE__*/React.createElement("img", _extends({
+      src: flags[currency.toLowerCase()],
+      alt: ""
+    }, props));
+  }
+
+  return null;
 }
 
 function CurrencySymbol(props) {
   var currency = props.currency;
-  return symbols[currency.toUpperCase()];
+
+  if (symbols[currency]) {
+    return symbols[currency.toUpperCase()];
+  }
+
+  return null;
 }
+
 function CurrencyFlagSymbol(props) {
   var currency = props.currency;
   return /*#__PURE__*/React.createElement(React.Fragment, null, " ", /*#__PURE__*/React.createElement("img", _extends({
