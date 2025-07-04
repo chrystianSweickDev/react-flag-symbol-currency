@@ -343,7 +343,7 @@ const symbols = {
 function CurrencyFlag(props) {
     const { currency } = props
 
-    if (flags[currency]) {
+    if (flags[currency.toLowerCase()]) {
         return (<img src={flags[currency.toLowerCase()]} alt="" {...props} />);
     }
 
@@ -353,7 +353,7 @@ function CurrencyFlag(props) {
 export function CurrencySymbol(props) {
     const { currency } = props
 
-    if (symbols[currency]) {
+    if (symbols[currency.toUpperCase()]) {
         return (symbols[currency.toUpperCase()]);
     }
 
@@ -363,7 +363,7 @@ export function CurrencySymbol(props) {
 export function CurrencyFlagSymbol(props) {
     const { currency } = props
 
-    if (flags[currency] && symbols[currency]) {
+    if (flags[currency.toLowerCase()] && symbols[currency.toUpperCase()]) {
         return (<> <img src={flags[currency.toLowerCase()]} alt="" {...props} />{` ${symbols[currency.toUpperCase()]}`} </>);
     }
 
